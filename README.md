@@ -1,4 +1,4 @@
-# 🕷️ AAWS — AI Agent Web Scraper
+# 🕷️ AAWS — AI Agent Web Scraper 🕷️
 
 > **LLM 에이전트 기초부터 브라우저 자동화, 멀티에이전트 협업 및 자동 벤치마크 평가까지** 다루는 실전 AI 에이전트 핸즈온 프로젝트
 
