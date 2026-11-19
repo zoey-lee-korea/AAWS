@@ -1,0 +1,25 @@
+{
+  "goal": "quotes.toscrape.com 1~3페이지 인용구 데이터 수집",
+  "output_schema": {
+    "page": "int (페이지 번호)",
+    "text": "string (인용구 문장)",
+    "author": "string (저자명)",
+    "tags": "list[string] (태그 목록)"
+  },
+  "data_sources": [
+    {
+      "description": "HTML 파싱을 통한 인용구 추출",
+      "method": "css_selectors",
+      "details": {
+        "container": "div.quote",
+        "fields": {
+          "text": "span.text",
+          "author": "small.author",
+          "tags": "div.tags a.tag"
+        }
+      }
+    }
+  ],
+  "navigation": "http://quotes.toscrape.com/page/{page_num}/ (1 <= page_num <= 3)",
+  "concerns": "서버 부하 방지를 위해 요청 간 1초 미만 가벼운 딜레이 적용"
+}
