@@ -1,13 +1,13 @@
 {
-  "goal": "quotes.toscrape.com 1~2페이지에서 명언(text, author, tags)을 수집하여 artifacts/data/quotes_multiagent.json에 저장",
+  "goal": "quotes.toscrape.com 1, 2페이지 명언, 저자, 태그 데이터 수집",
   "output_schema": {
-    "text": "string (명언 내용)",
-    "author": "string (작가명)",
-    "tags": "list of strings (태그 배열)"
+    "text": "string (명언 본문)",
+    "author": "string (저자 이름)",
+    "tags": "list of string (태그 목록)"
   },
   "data_sources": [
     {
-      "description": "quotes.toscrape.com 명언 목록",
+      "description": "HTML CSS 셀렉터를 통한 명언 블록 추출",
       "method": "css_selectors",
       "details": {
         "container": "div.quote",
@@ -19,6 +19,6 @@
       }
     }
   ],
-  "navigation": "http://quotes.toscrape.com/ 및 http://quotes.toscrape.com/page/2/",
-  "concerns": "정적 HTML 사이트로 차단 및 봇 감지 위험 낮음"
+  "navigation": "http://quotes.toscrape.com/page/1/ 및 http://quotes.toscrape.com/page/2/",
+  "concerns": "정적 HTML 사이트이므로 requests / BeautifulSoup 또는 httpx / asyncio를 이용한 비동기 스크래핑 가능"
 }
