@@ -1,14 +1,13 @@
 {
-  "goal": "quotes.toscrape.com 1~3페이지 인용구 데이터 수집",
+  "goal": "quotes.toscrape.com 1~2페이지에서 명언(text, author, tags)을 수집하여 artifacts/data/quotes_multiagent.json에 저장",
   "output_schema": {
-    "page": "int (페이지 번호)",
-    "text": "string (인용구 문장)",
-    "author": "string (저자명)",
-    "tags": "list[string] (태그 목록)"
+    "text": "string (명언 내용)",
+    "author": "string (작가명)",
+    "tags": "list of strings (태그 배열)"
   },
   "data_sources": [
     {
-      "description": "HTML 파싱을 통한 인용구 추출",
+      "description": "quotes.toscrape.com 명언 목록",
       "method": "css_selectors",
       "details": {
         "container": "div.quote",
@@ -20,6 +19,6 @@
       }
     }
   ],
-  "navigation": "http://quotes.toscrape.com/page/{page_num}/ (1 <= page_num <= 3)",
-  "concerns": "서버 부하 방지를 위해 요청 간 1초 미만 가벼운 딜레이 적용"
+  "navigation": "http://quotes.toscrape.com/ 및 http://quotes.toscrape.com/page/2/",
+  "concerns": "정적 HTML 사이트로 차단 및 봇 감지 위험 낮음"
 }
