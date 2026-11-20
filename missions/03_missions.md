@@ -306,8 +306,8 @@ http://quotes.toscrape.com 사이트에서 1~2페이지의 명언(text, author, 
 
 ## ✅ 성공 검증 체크리스트
 - [ ] `notebooks/4_MultiAgent_Orchestration.ipynb`를 확인하고 원칙 중심 프롬프팅 및 `invoke_sub_agent` 규약을 이해했는가?
-- [ ] `app/agents/supervisor/` 패키지의 `tools.py`, `prompt.py`, `agent.py`가 정확히 구현되었는가?
-- [ ] Chainlit UI에서 `supervisor` 프로필이 정상적으로 나타나고 선택 가능한가?
+- [*] `app/agents/supervisor/` 패키지의 `tools.py`, `prompt.py`, `agent.py`가 정확히 구현되었는가?
+- [*] Chainlit UI에서 `supervisor` 프로필이 정상적으로 나타나고 선택 가능한가?
 - [ ] Supervisor가 `invoke_sub_agent`로 Scraper에게 작업을 위임하여 실제 `artifacts/data/quotes_multiagent.json` 파일이 생성되었는가?
 - [ ] 전체 멀티에이전트 실행 루프가 에러 없이 성공적으로 마무리되었는가?
 
