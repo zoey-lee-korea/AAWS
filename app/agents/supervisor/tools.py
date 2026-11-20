@@ -15,8 +15,15 @@ from langchain_core.messages import HumanMessage
 
 from app.utils import normalize_content
 from app.tools.plan import enter_plan, exit_plan, task_create, task_list, task_update, check_plan_mode_tool_allowed
-from app.tools.common import file_read, file_writer, glob_search, grep_search, file_edit, web_search
+from app.tools.common import file_read, file_writer, file_edit, glob_search, grep_search, web_search
 from app.agents.scraper import create_agent_executor as create_scraper_executor
+
+# ── 1. 프로덕션 Long-Running 도구 모듈 임포트 ──
+from app.tools.supervisor_tools import (
+    invoke_sub_agent,
+    list_sub_agents,
+    get_sub_agent_job_status
+)
 
 # =============================================================================
 # 1. invoke_sub_agent Pydantic 스키마 및 도구 정의 (Mission 03)
@@ -98,8 +105,12 @@ Instruction: {task_instruction}"""
 tools_supervisor = [
     # Planning & Task Board (5종)
     enter_plan, exit_plan, task_create, task_list, task_update,
-    # Sub-Agent Invocation (1종)
-    invoke_sub_agent,
+    
+    # Sub-Agent Orchestration (3종)
+    list_sub_agents, invoke_sub_agent, get_sub_agent_job_status,
+    
     # Common File / Search Tools (6종)
     file_read, file_writer, file_edit, glob_search, grep_search, web_search,
 ]
+
+__all__ = ["tools_supervisor"]
